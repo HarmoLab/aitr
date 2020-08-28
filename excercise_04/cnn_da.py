@@ -143,7 +143,7 @@ print(device)
 
 # 学習途中モデルの読み出し
 if model_read:
-    if device == "cpu":
+    if not(torch.cuda.is_available()):
         checkpoint = torch.load("./model/cnn40.pt", map_location=device)
     else:
         checkpoint = torch.load("./model/cnn40.pt")

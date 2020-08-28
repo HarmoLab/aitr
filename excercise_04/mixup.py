@@ -47,7 +47,7 @@ def mixup_criterion(criterion, pred, y_a, y_b, lam):
 transform = transforms.Compose(
     [
         # 画像のリサイズ
-        transforms.Resize((IMAGE_SIZE, IMAGE_SIZE)),
+        transforms.Resize((224, 224)),
         # tensorに変換
         transforms.ToTensor(),
     ]
