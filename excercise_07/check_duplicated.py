@@ -6,7 +6,7 @@ img_num = 300
 
 p = Path("data/daytona")
 
-imgs = list(p.glob("*"))
+imgs = sorted(list(p.glob("*")))
 img_num = len(imgs)
 
 img_hash = [imagehash.phash(Image.open(img)) for img in imgs]
