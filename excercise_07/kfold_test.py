@@ -10,6 +10,3 @@ for train_index, test_index in kf.split(x):
     print("訓練インデックス", train_index)
     print("訓練データ", x[train_index])
     print("テストインデックス", test_index, "\n")
-
-    print("テストデータ", x[test_index])
-
