@@ -1,3 +1,7 @@
+# 参考
+# Bingの画像検索APIを使って画像を大量に収集する - Qiita https://qiita.com/ysdyt/items/49e99416079546b65dfc#%E3%82%B3%E3%83%BC%E3%83%89
+# access 2020-10-20
+
 import argparse
 import http.client
 import json
