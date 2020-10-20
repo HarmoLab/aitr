@@ -16,7 +16,7 @@ import time
 #
 
 # ライブラリのインストール
-# pip install pysha3
+# pip3 install pysha3
 
 # API KEY の設定
 # 以下のURLで API KEY を確認
