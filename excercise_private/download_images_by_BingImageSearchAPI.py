@@ -1,3 +1,4 @@
+import argparse
 import http.client
 import json
 import re
@@ -49,9 +50,7 @@ def make_img_path(save_dir_path, url):
     file_extension = os.path.splitext(url)[-1]
     if file_extension.lower() in ('.jpg', '.jpeg', '.gif', '.png', '.bmp'):
         encoded_url = url.encode('utf-8') # required encoding for hashed
-        # ここ
         hashed_url = hashlib.sha3_256(encoded_url).hexdigest()
-        # ここも
         full_path = os.path.join(save_img_path, hashed_url + file_extension.lower())
 
         make_correspondence_table(correspondence_table, url, hashed_url)
@@ -81,10 +80,16 @@ def save_image(filename, image):
 
 
 if __name__ == "__main__":
-    save_dir_path = './bingimage'
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--query", type=str,
+                        help="検索キーワード(複数の場合は+で区切る)")
+    parser.add_argument("--N", type=int,
+                        help="検索画像枚数")
+    args = parser.parse_args()
+    save_dir_path = './{}'.format(args.query)
     make_dir(save_dir_path)
 
-    num_imgs_required = 1000 # Number of images you want. The number to be divisible by 'num_imgs_per_transaction'
+    num_imgs_required = args.N # Number of images you want. The number to be divisible by 'num_imgs_per_transaction'
     num_imgs_per_transaction = 150 # default 30, Max 150
     offset_count = math.floor(num_imgs_required / num_imgs_per_transaction)
 
@@ -101,7 +106,7 @@ if __name__ == "__main__":
 
         params = urllib.parse.urlencode({
             # Request parameters
-            'q': 'ロレックス+GMTマスター',
+            'q': args.query,
             'mkt': 'ja-JP',
             'count': num_imgs_per_transaction,
             'offset': offset * num_imgs_per_transaction # increment offset by 'num_imgs_per_transaction' (for example 0, 150, 300)
