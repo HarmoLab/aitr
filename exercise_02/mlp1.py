@@ -63,6 +63,8 @@ test_loader = torch.utils.data.DataLoader(
 )
 
 # ニューラルネットワークの定義
+# torch.nn.Moduleを継承したクラスに__init__とforward関数を定義する
+# forward関数は入力から出力の処理を定義する関数
 class MLP(nn.Module):
     def __init__(self):
         '''
@@ -80,9 +82,11 @@ class MLP(nn.Module):
         '''
         # (28*28)の画像データを1列のベクトルに変換
         x = x.view(-1, 28 * 28)
+        # 中間層(fc1)
         x = self.fc1(x)
         # 活性化関数(ReLU)
         x = F.relu(x)
+        # 出力層
         x = self.fc_output(x)
         return x
 
@@ -90,23 +94,26 @@ class MLP(nn.Module):
 model = MLP()
 # 損失関数
 loss_function = nn.CrossEntropyLoss()
-# 勾配降下法を行うoptimizer
+# 勾配降下法を行うoptimizer, lrは学習率(learning rate)
 optimizer = optim.SGD(model.parameters(), lr=0.1)
 
+# 学習にかかった時間の計測用
 start_time = time.time()
 
 print("\ntraining start !!!\n")
+# train_lossは訓練データに対する誤差, valid_lossは検証データに対する誤差
 print("epoch\ttrain_loss\tvalid_loss")
 for epoch in range(MAX_EPOCH):
+    # モデルを訓練する時は model.train() とする
     model.train()
     train_loss_list = []
-    # DataLoaderをfor文で回すと入力と正解ラベルが得られる
+    # DataLoaderをfor文で回すとバッチサイズ分の入力(x)と正解ラベル(label)が得られる
     for x, label in train_loader:
         # 勾配を0に初期化
         optimizer.zero_grad()
-        # 順伝播
+        # モデルの出力
         output = model(x)
-        # 誤差の計算
+        # 出力(output)と正解(label)の訓練誤差を計算
         loss = loss_function(output, label)
         # 誤差逆伝播
         loss.backward()
@@ -117,7 +124,7 @@ for epoch in range(MAX_EPOCH):
     # 各ミニバッチでの訓練誤差の平均を取り，本エポックでの訓練誤差とする
     train_loss_mean = np.mean(train_loss_list)
 
-    # 検証データでも同様に誤差を計算
+    # 検証データでも訓練データと同様に誤差を計算
     # モデルを評価する時は model.eval() とする
     model.eval()
     valid_loss_list = []
@@ -128,18 +135,18 @@ for epoch in range(MAX_EPOCH):
     valid_loss_mean = np.mean(valid_loss_list)
     print("{}\t{:.8}\t{:.8}".format(epoch, train_loss_mean, valid_loss_mean))
 
+# 学習にかかった時間の出力
 end_time = time.time()
 print("training time : {} [sec]".format(end_time - start_time))
-
 print("\ntraining end !!!\n")
 
-# モデル保存
+# モデルを保存する場合は以下のような処理で可能
 # model_dir = "./model/"
 # os.makedirs(model_dir, exist_ok=True)
 # save_path = model_dir + "mlp.pt"
 # torch.save(model.state_dict(), save_path)
 
-# モデル読込
+# モデルを読み込む場合は以下のような処理で可能
 # model.load_state_dict(torch.load(save_path))
 
 # モデルの評価(テストデータを使用)
