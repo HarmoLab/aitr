@@ -1,5 +1,8 @@
 import os
 import random
+import time
+import warnings
+warnings.simplefilter('ignore', UserWarning)
 
 import numpy as np
 import torch
@@ -72,6 +75,7 @@ class CNN(nn.Module):
         self.conv2 = nn.Conv2d(8, 16, 3) # 26x26x8 -> 24x24x16
         # プーリング層
         self.pool = nn.MaxPool2d(2, 2) # 24x24x16 -> 12x12x16
+        # 全結合層
         self.fc1 = nn.Linear(12 * 12 * 16, 128)
         self.fc2 = nn.Linear(128, 64)
         self.fc3 = nn.Linear(64, 10)
@@ -85,7 +89,7 @@ class CNN(nn.Module):
         x = F.relu(self.conv2(x))
         # 最大プーリング
         x = self.pool(x)
-        #x = self.dropout1(x)
+
         # 全結合層
         x = x.view(-1, 12 * 12 * 16)
         x = F.relu(self.fc1(x))
@@ -100,16 +104,23 @@ loss_function = nn.CrossEntropyLoss()
 # 勾配降下法を行うoptimizer
 optimizer = optim.SGD(model.parameters(), lr=0.1)
 
+# 学習にかかった時間の計測用
+start_time = time.time()
+
+print("\ntraining start !!!\n")
+# train_lossは訓練データに対する誤差, valid_lossは検証データに対する誤差
+print("epoch\ttrain_loss\tvalid_loss")
 for epoch in range(MAX_EPOCH):
+    # モデルを訓練する時は model.train() とする
     model.train()
     train_loss_list = []
-    # DataLoaderをfor文で回すと入力と正解ラベルが得られる
+    # DataLoaderをfor文で回すとバッチサイズ分の入力(x)と正解ラベル(label)が得られる
     for x, label in train_loader:
         # 勾配を0に初期化
         optimizer.zero_grad()
-        # 順伝播
+        # モデルの出力
         output = model(x)
-        # 誤差の計算
+        # 出力(output)と正解(label)の訓練誤差を計算
         loss = loss_function(output, label)
         # 誤差逆伝播
         loss.backward()
@@ -130,7 +141,7 @@ for epoch in range(MAX_EPOCH):
         valid_loss_list.append(loss.item())
     valid_loss_mean = np.mean(valid_loss_list)
 
-    print(epoch, train_loss_mean, valid_loss_mean)
+    print("{}\t{:.8}\t{:.8}".format(epoch, train_loss_mean, valid_loss_mean))
 
 # モデル保存
 model_dir = "./model/"

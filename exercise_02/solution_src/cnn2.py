@@ -47,7 +47,6 @@ class CNN(nn.Module):
         x = F.relu(self.conv2(x))
         # 最大プーリング
         x = self.pool(x)
-        #x = self.dropout1(x)
         # 全結合層
         x = x.view(-1, 12 * 12 * 16)
         x = F.relu(self.fc1(x))
@@ -55,18 +54,34 @@ class CNN(nn.Module):
         x = self.fc3(x)
         return x
 
-# CNNモデル読込
+    def output_map(self, x):
+        """
+        特徴マップの出力
+        """
+        # 畳み込み層 + 活性化関数
+        x = F.relu(self.conv1(x))
+        x = F.relu(self.conv2(x))
+        return x
 
-# 画像読込
-
-# 画像をtensorに変換
-
-# tensorにバッチの次元を作る
-
-# 推論(CNNモデルに画像tensorを入力)
-
-# ソフトマックス関数で確率として扱える値に変換
-
-# 確率が最も高い 数字 を分類結果にする
-
-# 各数字の確率と分類結果を出力
+# TODO CNNモデル読込
+model = CNN()
+model_path = "./model/cnn.pt"
+model.load_state_dict(torch.load(model_path))
+model.eval()
+# TODO 画像読込
+img_path = "./data/ensyu_cnn/image_A.jpg"
+img = Image.open(img_path)
+# TODO 画像をtensorに変換
+img_tensor = transform(img)
+# TODO tensorにバッチの次元を作る
+img_tensor = img_tensor.unsqueeze(0)
+# TODO 特徴マップを出力
+maps = model.output_map(img_tensor)
+# TODO 画像で保存
+result_dir  ="./results/"
+for i, map_ in enumerate(maps[0]):
+    dir_ = result_dir + os.path.splitext(os.path.basename(img_path))[0] + "/"
+    os.makedirs(dir_, exist_ok=True)
+    save_path = dir_ + str(i) + ".jpg"
+    img = torchvision.transforms.functional.to_pil_image(map_)
+    img.save(save_path)
