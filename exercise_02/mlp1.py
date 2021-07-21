@@ -72,9 +72,9 @@ class MLP(nn.Module):
         '''
         super(MLP, self).__init__()
         # 10 units
-        self.fc1 = nn.Linear(28 * 28, 10)
+        self.fc1 = nn.Linear(28 * 28, 16)
         # 10 units (出力層)
-        self.fc_output = nn.Linear(10, 10)
+        self.fc_output = nn.Linear(16, 10)
 
     def forward(self, x):
         '''
