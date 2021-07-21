@@ -26,11 +26,6 @@ print("y = torch.max(x)")
 print(y)
 print()
 
-y = torch.max(x)
-print("y = torch.max(x)")
-print(y)
-print()
-
 y, yi = torch.max(x, dim=0)
 print("y, yi = torch.max(x, dim=0)")
 print(y, yi)
@@ -41,6 +36,7 @@ print("y, yi = torch.max(x, dim=1)")
 print(y, yi)
 print()
 
+print()
 # softmax
 x = torch.zeros(3, 3)
 x[0][0], x[0][1], x[0][2] = 2.0, 0.4, -2.0
