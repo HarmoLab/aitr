@@ -71,7 +71,7 @@ class MLP(nn.Module):
         中間層を定義
         '''
         super(MLP, self).__init__()
-        # 10 units
+        # 16 units
         self.fc1 = nn.Linear(28 * 28, 16)
         # 10 units (出力層)
         self.fc_output = nn.Linear(16, 10)
