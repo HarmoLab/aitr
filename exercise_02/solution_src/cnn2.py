@@ -65,12 +65,15 @@ img = Image.open(img_path)
 # TODO 画像をtensorに変換
 img_tensor = transform(img)
 # TODO tensorにバッチの次元を作る
+# 参考：sample_src/sample_tensor_operation.py
 img_tensor = img_tensor.unsqueeze(0)
 # TODO 推論(CNNモデルに画像tensorを入力)
 output = model(img_tensor)
 # TODO ソフトマックス関数で確率として扱える値に変換
+# 参考：sample_src/sample_function.py
 pred_proba = F.softmax(output, dim=1)
 # TODO 確率が最も高い 数字 を分類結果にする
+# 参考：sample_src/sample_function.py
 pred_number = int(pred_proba.argmax(dim=1, keepdim=True)[0][0])
 # TODO 各数字の確率と分類結果を出力
 print("number\tprobability")
