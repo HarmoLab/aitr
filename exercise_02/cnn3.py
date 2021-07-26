@@ -62,11 +62,7 @@ class CNN(nn.Module):
 
 # TODO tensorにバッチの次元を作る
 
-# TODO 推論(CNNモデルに画像tensorを入力)
+# TODO 特徴マップを出力
 
-# TODO ソフトマックス関数で確率として扱える値に変換
-
-# TODO 確率が最も高い 数字 を分類結果にする
-
-# TODO 各数字の確率と分類結果を出力
+# TODO 画像で保存
 

@@ -54,6 +54,15 @@ class CNN(nn.Module):
         x = self.fc3(x)
         return x
 
+    def output_map(self, x):
+        """
+        特徴マップの出力
+        """
+        # 畳み込み層 + 活性化関数
+        x = F.relu(self.conv1(x))
+        x = F.relu(self.conv2(x))
+        return x
+
 # TODO CNNモデル読込
 model = CNN()
 model_path = "./model/cnn.pt"
@@ -66,14 +75,13 @@ img = Image.open(img_path)
 img_tensor = transform(img)
 # TODO tensorにバッチの次元を作る
 img_tensor = img_tensor.unsqueeze(0)
-# TODO 推論(CNNモデルに画像tensorを入力)
-output = model(img_tensor)
-# TODO ソフトマックス関数で確率として扱える値に変換
-pred_proba = F.softmax(output, dim=1)
-# TODO 確率が最も高い 数字 を分類結果にする
-pred_number = int(pred_proba.argmax(dim=1, keepdim=True)[0][0])
-# TODO 各数字の確率と分類結果を出力
-print("number\tprobability")
-for i in range(10):
-    print("{}\t{}".format(i, round(float(pred_proba[0][i]), 3)))
-print("{}は{}です．".format(img_path, pred_number))
+# TODO 特徴マップを出力
+maps = model.output_map(img_tensor)
+# TODO 画像で保存
+result_dir  ="./results/"
+for i, map_ in enumerate(maps[0]):
+    dir_ = result_dir + os.path.splitext(os.path.basename(img_path))[0] + "/"
+    os.makedirs(dir_, exist_ok=True)
+    save_path = dir_ + str(i) + ".jpg"
+    img = torchvision.transforms.functional.to_pil_image(map_)
+    img.save(save_path)
