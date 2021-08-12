@@ -162,8 +162,12 @@ for epoch in range(MAX_EPOCH):
 # モデル保存
 model_dir = "./model/"
 os.makedirs(model_dir, exist_ok=True)
-save_path = model_dir + "cnn.pt"
-torch.save(model.state_dict(), save_path)
+for i in range(10):
+    save_path = f'{model_dir}cnn{i}.pt'
+    if not os.path.exists(save_path):
+        torch.save(model.state_dict(), save_path)
+        break
+
 # モデル読込
 # model.load_state_dict(torch.load(save_path))
 

@@ -90,7 +90,7 @@ model.fc = nn.Linear(512, 2)
 start = time.time()
 # モデル読み込み
 model_dir = "./model/"
-save_path = model_dir + "cnn.pt"
+save_path = model_dir + "cnn1.pt"
 model.load_state_dict(torch.load(save_path))
 
 # モデルの評価(テストデータを使用)
@@ -105,9 +105,9 @@ for n, (x, label, img_path) in enumerate(test_loader):
     preds = pred if n == 0 else torch.cat([preds, pred])
     labels = label if n == 0 else torch.cat([labels, label])
 
-    # if n == 0:
-    for i in range(50):
-        print(img_path[i], probs[i], label[i])
+    if n == 0:
+        for i in range(50):
+            print(img_path[i], probs[i], label[i])
 
 cm = confusion_matrix(labels, preds)
 print(cm)
