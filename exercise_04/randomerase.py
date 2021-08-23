@@ -3,7 +3,7 @@ from PIL import Image
 from torchvision import transforms
 
 # 画像の読み込み
-img = Image.open("../excercise_03/data/train/cat.1.jpg")
+img = Image.open("../exercise_03/data/train/cat.1.jpg")
 
 # Tensor化
 img = torchvision.transforms.ToTensor()(img)

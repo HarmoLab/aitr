@@ -2,7 +2,7 @@ import torchvision
 from PIL import Image
 
 # 画像の読み込み
-img = Image.open("../excercise_03/data/train/cat.1.jpg")
+img = Image.open("../exercise_03/data/train/cat.1.jpg")
 
 # 元画像の表示
 img.show()

@@ -44,7 +44,7 @@ class Cutout(object):
 
 
 # 画像の読み込み
-img = Image.open("../excercise_03/data/train/cat.1.jpg")
+img = Image.open("../exercise_03/data/train/cat.1.jpg")
 
 transform = transforms.Compose([
     torchvision.transforms.ToTensor(),

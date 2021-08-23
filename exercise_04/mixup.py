@@ -57,9 +57,9 @@ transform = transforms.Compose(
 criterion = nn.CrossEntropyLoss()
 
 # 画像読み込みおよび前処理
-img_1 = Image.open("../excercise_03/data/train/cat.1.jpg")
-img_2 = Image.open("../excercise_03/data/train/dog.1.jpg")
-img_3 = Image.open("../excercise_03/data/train/cat.2.jpg")
+img_1 = Image.open("../exercise_03/data/train/cat.1.jpg")
+img_2 = Image.open("../exercise_03/data/train/dog.1.jpg")
+img_3 = Image.open("../exercise_03/data/train/cat.2.jpg")
 
 img_1 = transform(img_1)
 img_2 = transform(img_2)
