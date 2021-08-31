@@ -95,7 +95,7 @@ train_transform = transforms.Compose(
 # 訓練データを取得
 train_dataset = MyDataset(
     csv_file="./data/train.csv",
-    root_dir='./data/train/',  # 画像を保存したディレクトリ(適宜書き換えて)
+    root_dir='../exercise_03/data/train/',  # 画像を保存したディレクトリ(適宜書き換えて)
     transform=transform,
 )
 # 訓練データの一部を検証データとして使用
@@ -123,7 +123,7 @@ valid_loader = torch.utils.data.DataLoader(
 # テストデータも同様
 test_dataset = MyDataset(
     "./data/test.csv",
-    root_dir='./data/train/',
+    root_dir='../exercise_03/data/train/',
     transform=transform,
 )
 test_loader = torch.utils.data.DataLoader(
