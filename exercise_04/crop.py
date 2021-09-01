@@ -17,4 +17,4 @@ img_output = transform(img)
 img_output.show()
 
 # 画像の保存
-img_output.save("output/crop.jpg")
+# img_output.save("output/crop.jpg")
