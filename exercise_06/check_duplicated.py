@@ -4,7 +4,7 @@ from PIL import Image
 
 img_num = 300
 
-p = Path("data/daytona")
+p = Path("data/gmtmaster")
 
 imgs = sorted(list(p.glob("*")))
 img_num = len(imgs)
