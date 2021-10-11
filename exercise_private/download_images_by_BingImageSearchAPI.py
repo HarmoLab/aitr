@@ -23,8 +23,6 @@ import time
 # pip3 install pysha3
 
 # API KEY の設定
-# 以下のURLで API KEY を確認
-# https://azure.microsoft.com/ja-jp/try/cognitive-services/my-apis/?apiSlug=search-api-v7
 API_KEY = ""
 
 def make_dir(path):
