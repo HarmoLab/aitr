@@ -117,8 +117,8 @@ if __name__ == "__main__":
         })
 
         try:
-            conn = http.client.HTTPSConnection('api.cognitive.microsoft.com')
-            conn.request("GET", "/bing/v7.0/images/search?%s" % params, "{body}", headers)
+            conn = http.client.HTTPSConnection('api.bing.microsoft.com')
+            conn.request("GET", "/v7.0/images/search?%s" % params, "{body}", headers)
             response = conn.getresponse()
             data = response.read()
 
