@@ -5,7 +5,7 @@ import torchvision
 img = Image.open("car.jpg")
 img_tensor = torchvision.transforms.functional.to_tensor(img)
 
-# ここに処理を記述．処理後のtensorはimg_tensorに代入する
+# ここにコードを記述．処理後のtensorはimg_tensorに代入する
 
 
 img_changed = torchvision.transforms.functional.to_pil_image(img_tensor)
@@ -17,7 +17,7 @@ img_changed.save('car_changed.jpg')
 img = Image.open("car.jpg")
 img_tensor = torchvision.transforms.functional.to_tensor(img)
 
-# ここに処理を記述
+# ここにコードを記述
 
 
 img_changed = torchvision.transforms.functional.to_pil_image(img_tensor)
@@ -29,7 +29,7 @@ img_tensor = torchvision.transforms.functional.to_tensor(img)
 img2 = Image.open("cleaner.jpg")
 img_tensor2 = torchvision.transforms.functional.to_tensor(img2)
 
-# ここに処理を記述．足し合わせたtensorはimg_outputに代入
+# ここにコードを記述．足し合わせたtensorはimg_outputに代入
 
 
 img_mixup = torchvision.transforms.functional.to_pil_image(img_output)
