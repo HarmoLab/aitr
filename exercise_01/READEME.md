@@ -8,16 +8,21 @@ $ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6
 $ sudo update-alternatives --config python3
 
 「2」を選択して「Enter」
+
+$ python3 --version
+
+Python 3.8.0 と表示されればOKです
+
 ```
 
 ### python の pip と apt 周りの変更
 ```bash
 $ sudo apt install -y python3-pip
 
-$ sudo apt remove python3-apt
-$ sudo apt autoremove
-$ sudo apt autoclean
-$ sudo apt install python3-apt
+$ sudo apt remove -y python3-apt
+$ sudo apt autoremove -y
+$ sudo apt autoclean -y
+$ sudo apt install -y python3-apt
 
 $ python3 -m pip install --upgrade pip
 ```
