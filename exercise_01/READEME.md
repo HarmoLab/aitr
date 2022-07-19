@@ -3,13 +3,7 @@
 ### python のインストール
 ```bash
 $ sudo apt install -y python3.8
-$ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
-$ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 2
-$ sudo update-alternatives --config python3
-
-「2」を選択して「Enter」
-
-$ python3 --version
+$ python3.8 --version
 
 Python 3.8.0 と表示されればOKです
 
@@ -18,18 +12,12 @@ Python 3.8.0 と表示されればOKです
 ### python の pip と apt 周りの変更
 ```bash
 $ sudo apt install -y python3-pip
-
-$ sudo apt remove -y python3-apt
-$ sudo apt autoremove -y
-$ sudo apt autoclean -y
-$ sudo apt install -y python3-apt
-
-$ python3 -m pip install --upgrade pip
+$ python3.8 -m pip install --upgrade pip
 ```
 
 ### pytorch の インストール
 ```bash
-$ pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
+$ python3.8 -m pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
 ```
 
 ### git の インストール
