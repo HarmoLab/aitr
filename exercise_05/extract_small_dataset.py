@@ -4,7 +4,7 @@
 import shutil
 import os
 
-from_data_dir = "../excercise_03/data/train/"
+from_data_dir = "../exercise_03/data/train/"
 to_data_dir = "./data/train/"
 os.makedirs(to_data_dir, exist_ok=True)
 
