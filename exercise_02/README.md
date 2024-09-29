@@ -18,8 +18,8 @@
 
 課題2, 3：./ex2_2.ipynb
 
-画像データ：./data/images/
+画像データ：./images/
 
 ## 演習ⅠⅡの解答例
 
-./data/answers/
+./answers/
