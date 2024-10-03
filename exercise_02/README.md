@@ -1,5 +1,13 @@
 # AI<画像/ChatGPT>技術者育成講座 2024 第2回
 
+## リンク
+
+第2回 GitHub：
+<https://github.com/HarmoLab/aitr/tree/main/exercise_02>
+
+Google Colaboratory：
+<https://colab.research.google.com/?hl=ja>
+
 ## 演習Ⅰ
 
 課題1：./02_ex1_1.ipynb
