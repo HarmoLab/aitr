@@ -1,4 +1,4 @@
-# AI<画像/GPT>技術者育成講座 2024 第3回
+# AI<画像/ChatGPT>技術者育成講座 2024 第3回
 
 ## リンク
 
@@ -10,3 +10,23 @@ Google Colaboratory：
 
 データセットダウンロード：
 <https://drive.google.com/file/d/1LW_lgLskgBmCdzDjzenlLq-w4lGwQ45b/view?usp=sharing>
+
+## データ
+
+訓練データ：./data/train.csv
+
+テストデータ：./data/test.csv
+
+## コード
+
+データの解凍：./03_unzip_data.ipynb
+
+データの確認：./03_check_data.ipynb
+
+ResNetの学習：./03_train_resnet.ipynb
+
+学習結果の確認：./03_check_predict.ipynb
+
+画像データの変換の確認：./03_check_data_augmentation.ipynb
+
+データ拡張を適用したResNetの学習：./appendix/03_train_resnet_with_augmentation.ipynb
