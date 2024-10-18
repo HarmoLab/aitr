@@ -27,6 +27,4 @@ ResNetの学習：./03_train_resnet.ipynb
 
 学習結果の確認：./03_check_predict.ipynb
 
-画像データの変換の確認：./03_check_data_augmentation.ipynb
-
-データ拡張を適用したResNetの学習：./appendix/03_train_resnet_with_augmentation.ipynb
+ResNetの転移学習：./03_train_resnet_transfer.ipynb
