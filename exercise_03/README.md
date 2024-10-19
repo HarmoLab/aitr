@@ -23,8 +23,8 @@ Google Colaboratory：
 
 データの確認：./03_check_data.ipynb
 
-ResNetの学習：./03_train_resnet.ipynb
+GPUを使用したResNetの学習：./03_train_resnet.ipynb
 
 学習結果の確認：./03_check_predict.ipynb
 
-ResNetの転移学習：./03_train_resnet_transfer.ipynb
+GPUを使用したResNetの転移学習：./03_train_resnet_transfer.ipynb
