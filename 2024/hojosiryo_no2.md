@@ -1,10 +1,3 @@
-# pythonのインストール
-Ubuntuにpythonをインストールします。
-
-プログラミングゼミで最終的に作成したい、環境のイメージ図を以下に示します。
-
-![`overview`](../image/00_python_installation/wsl_pyenv_pipenv_overview.png)
-
 ## Pythonバージョンとパッケージ
 Pythonは以下の2つのバージョンを管理する必要があります。
 - Python本体
@@ -15,7 +8,7 @@ Pythonは以下の2つのバージョンを管理する必要があります。
 ## Pyenv+Pipenvインストール
 
 ### 前準備
-そもそもpythonが入ってないのでインストールします。
+pythonが入ってないのでインストール
 
 - python3とpip3をインストール
 
@@ -121,14 +114,14 @@ pipenv --venv
 
 ## Pyenv+Pipenvで仮想環境作成
 
-pipenvが有効化する範囲は各ディレクトリごとです。
-今回はB3seminarディレクトリを作ってそこで使いましょう。
+pipenvが有効化する範囲は各ディレクトリごと。
+今回はaitrディレクトリを作ってそこで作業を行いましょう。
 
 - プロジェクトディレクトリ作成
 
 ```
-mkdir B3Seminar_yourname
-cd B3Seminar_yourname
+mkdir aitr
+cd aitr
 ```
 
 - Python3.8の仮想環境作成
