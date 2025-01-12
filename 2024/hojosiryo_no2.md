@@ -8,15 +8,12 @@ Pythonは以下の2つのバージョンを管理する必要があります。
 ## Pyenv+Pipenvインストール
 
 ### 前準備
-pythonが入ってないのでインストールします
+Gitが入ってないのでインストールします
 
-- python3とpip3をインストール
-
+- Gitのインストール
 ```
-sudo apt install python3 python3-pip -y
-python3.12 -m pip install --upgrade pip
+sudo apt install git -y
 ```
-
 
 ### pyenv
 Python本体の複数バージョンを使い分けるツールです。
@@ -61,10 +58,9 @@ pyenv
 ### pipenv
 Pipenvは、Python公式が正式に推薦する依存関係管理・パッケージングのためのツールです。
 
-- 以下pip3でインストール
-
+- インストール
 ```
-sudo pip3 install pipenv
+sudo apt install pipenv
 ```
 
 - プロジェクトディレクトリ配下に仮想環境を作って欲しいので、`~/.bashrc`に以下を追記
@@ -143,7 +139,7 @@ pipenv shell
 ```
 python -V
 ```
-Python 3.8.x であることを確認(xは任意の数字)
+Python 3.12.x であることを確認(xは任意の数字)
 
 - ライブラリインストール
 
