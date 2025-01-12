@@ -8,12 +8,13 @@ Pythonは以下の2つのバージョンを管理する必要があります。
 ## Pyenv+Pipenvインストール
 
 ### 前準備
-pythonが入ってないのでインストール
+pythonが入ってないのでインストールします
 
 - python3とpip3をインストール
 
 ```
 sudo apt install python3 python3-pip -y
+python3.12 -m pip install --upgrade pip
 ```
 
 
@@ -45,13 +46,13 @@ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 ```
 
-- `~/.bashrc`に追記したので読み込む（`~/.bashrc`とは、shellの起動時に自動で読み込まれる設定ファイル）
+- `~/.bashrc`に追記したので再読み込みします（`~/.bashrc`とは、shellの起動時に自動で読み込まれる設定ファイル）
 
 ```
 source ~/.bashrc
 ```
 
-- 以下コマンドでちゃんと動くか（パスが通ってるか）確認
+- 以下コマンドでちゃんと動くか（パスが通ってるか）確認します
 
 ```
 pyenv
@@ -72,7 +73,7 @@ sudo pip3 install pipenv
 export PIPENV_VENV_IN_PROJECT=true
 ```
 
-- `~/.bashrc`に追記したので読み込む
+- `~/.bashrc`に追記したので再読み込み
 
 ```
 source ~/.bashrc
@@ -80,7 +81,7 @@ source ~/.bashrc
 
 #### 使い方
 
-ググればわかりやすい記事たくさんでてくるので、Qiita記事コピペしました。
+Qiita記事より便利なコマンド集を紹介します
 
 ```
 pipenv install
@@ -114,8 +115,8 @@ pipenv --venv
 
 ## Pyenv+Pipenvで仮想環境作成
 
-pipenvが有効化する範囲は各ディレクトリごと。
-今回はaitrディレクトリを作ってそこで作業を行いましょう。
+pipenvが有効化する範囲は各ディレクトリごとです。
+今回はaitrディレクトリを作ってそこで作業を行います。
 
 - プロジェクトディレクトリ作成
 
@@ -124,12 +125,12 @@ mkdir aitr
 cd aitr
 ```
 
-- Python3.8の仮想環境作成
+- Python3.12の仮想環境作成
 
 ```
-pipenv --python 3.8.10
+pipenv --python 3.12
 ```
-もしWould you like us to install...[Y/n]って聞かれたらEnter
+もしWould you like us to install...[Y/n]って聞かれたらEnterを押してください
 
 - 仮想環境の有効化
 
