@@ -169,3 +169,9 @@ array([[9., 9., 9.],
        [9., 9., 9.],
        [9., 9., 9.]])
 ```
+
+## pytorch
+pytorchのインストール（信頼できるホストにURLを追加している）
+```
+python3.12 -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu --trusted-host download.pytorch.org
+```
